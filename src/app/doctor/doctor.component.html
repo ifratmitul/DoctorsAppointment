@@ -1,0 +1,16 @@
+<section class="doctor-header">
+    <div class="u-centered-text">
+        <h2 class="heading-secondary">
+            Available Doctors List        
+        </h2>
+    </div>
+</section>
+
+<section class="doctor-container row">
+    
+    <span *ngFor="let item of doctors" class="col-1-of-2">
+        <app-doctor-item [doctor] = "item"></app-doctor-item>
+    </span>
+    
+
+</section>
