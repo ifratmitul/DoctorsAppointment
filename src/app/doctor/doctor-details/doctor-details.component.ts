@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DoctorService } from '../doctor.service';
 
 @Component({
   selector: 'app-doctor-details',
@@ -7,9 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorDetailsComponent implements OnInit {
 
-  constructor() { }
+  details
+
+
+  doctorAvailableDates = []
+  doctorAvailability = []
+
+  constructor(private doctorService:DoctorService, private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getDetails();
+  }
+
+  getDetails(){
+    
+    this.doctorService.getDoctorDetails(this.activatedRoute.snapshot.paramMap.get('id')).subscribe(res => {
+      console.log(res);
+      this.details = res;     
+      for (const item in res['availibility']){
+            // this.doctorAvailableDates.push(item)
+        this.doctorAvailability.push({date: item, time: res['availibility'][item]})
+        
+      }
+      
+    }, err => {
+      console.log(err);
+      
+    })
+
+    
+
   }
 
 }

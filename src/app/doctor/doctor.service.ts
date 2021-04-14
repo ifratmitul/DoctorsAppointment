@@ -32,4 +32,10 @@ private baseUrl = environment.baseUrl;
       })
     )
   }
+
+
+  getDoctorDetails(id:string){
+    return this.http.get(this.baseUrl+'/'+id)
+
+  }
 }
