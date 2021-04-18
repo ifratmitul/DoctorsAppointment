@@ -1,39 +1,48 @@
 <div class="container emp-profile">
-            <div class="row">
+        <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="../../../assets/doctor.jpg" alt=""/>
+                    <img src="../../../assets/doc.png" alt=""/>
                     
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="profile-head" *ngIf="details">
-                            <h2>
-                            {{details['name']}}
-                            </h2>
-                            <h4>
-                            {{details['org']}}                            
-                            </h4>
-
-                            <h4> Visit Duration:
-                                {{details['visitDurationInMin'] }} Min                           
-                            </h4>
-                            <h5 class="mt-2">Availability :</h5>
-                            <p *ngFor="let item of doctorAvailability"> {{item.date |uppercase}} : <span>{{item.time}}</span></p>
+                    <h2 class="doc-name"> {{details['name']}} </h2>
+                    <h4 class="doc-details">{{details['org']}} </h4>
+                    <h4 class="doc-details"> Visit Duration:{{details['visitDurationInMin'] }} Min</h4>
+                    
+                    <h5 class="mt-2">Availability :</h5>
+                    <p class="doc-slots" *ngFor="let item of doctorAvailability"> {{item.date |uppercase}} : <span>{{item.time}}</span></p>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                         </li>
 
+
                     </ul>
                 </div>
+
+
+            <div class=" calender text-center">
+
+                <h3 class="cal-title">Book an Appointment</h3>
+
+                <div class = "col-12" *ngIf="hidden.length > 0">
+                    <app-calendar></app-calendar>
+                </div>
+            </div>        
+
             </div>
+    
+
 
         </div>
 
 
 
-    
+
+
       
 </div>

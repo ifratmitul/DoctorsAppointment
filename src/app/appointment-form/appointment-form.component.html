@@ -1,0 +1,59 @@
+
+
+<div class="container">
+<div class="card">
+
+
+    <div class="d-flex justify-content-center mt-5">
+        <div class="col-8 form-group">
+          <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+            <div class="text-center mb-4">
+              <h1 class="h3 mb-3 font-weight-normal">Fill up the form to Book an Appointment</h1>
+            </div>
+            <div class="form-group" *ngIf="timeSlots.length > 0">
+              <label for="">Select a Slot</label>
+              <select class="form-control">
+                <option value="" disabled>Default select</option>
+                ,<option *ngFor="let item of timeSlots" >{{item.date | uppercase}} {{item.time}}</option>
+              </select>
+            </div>
+            <app-input-element formControlName="name" [label]="'Name'"></app-input-element>
+            
+            <app-input-element formControlName="phone" [label]="'Phone number'" type="number"></app-input-element>
+            <app-input-element formControlName="email" [label]="'Email Address'"></app-input-element>
+            <app-input-element formControlName="reason" [label]="'Reason to visit'"></app-input-element>
+    
+    
+
+                <button *ngIf="!isSubmitted" class="btn btn-lg btn-info btn-block" type="submit">Set an Appointment</button>
+
+
+            <div class="container mt-5 text-center" *ngIf="isSubmitted">
+
+              <p class="alert-success">Submitted successfully</p>
+              <a routerLink = "/" class="btn btn-warning">Go back to doctor list</a>
+            </div>
+          </form>
+
+
+        </div>
+        
+      </div> 
+
+
+
+ 
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
